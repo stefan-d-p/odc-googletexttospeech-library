@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>Without.Systems.TextToSpeech.Library</AssemblyName>
+        <RootNamespace>Without.Systems.TextToSpeech</RootNamespace>
+        <LangVersion>12</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="13.0.1" />
+        <PackageReference Include="Google.Cloud.TextToSpeech.V1Beta1" Version="2.0.0-beta11" />
+        <PackageReference Include="OutSystems.ExternalLibraries.SDK" Version="1.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\TextToSpeech.png" />
+      <EmbeddedResource Include="Resources\TextToSpeech.png" />
+    </ItemGroup>
+
+</Project>

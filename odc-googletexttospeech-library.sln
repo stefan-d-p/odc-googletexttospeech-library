@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToSpeech.Library", "TextToSpeech.Library\TextToSpeech.Library.csproj", "{3959BBAC-7A43-436A-A11D-D10A20A99B11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToSpeech.Test", "TextToSpeech.Test\TextToSpeech.Test.csproj", "{8257C413-D9DD-4EC4-B884-5A35426271BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3959BBAC-7A43-436A-A11D-D10A20A99B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3959BBAC-7A43-436A-A11D-D10A20A99B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3959BBAC-7A43-436A-A11D-D10A20A99B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3959BBAC-7A43-436A-A11D-D10A20A99B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8257C413-D9DD-4EC4-B884-5A35426271BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8257C413-D9DD-4EC4-B884-5A35426271BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8257C413-D9DD-4EC4-B884-5A35426271BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8257C413-D9DD-4EC4-B884-5A35426271BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
