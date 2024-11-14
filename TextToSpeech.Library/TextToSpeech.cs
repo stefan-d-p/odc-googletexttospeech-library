@@ -23,8 +23,7 @@ public class TextToSpeech : ITextToSpeech
                         .Replace("\n", Environment.NewLine)
                         .Replace("\\n", Environment.NewLine)
                         .Replace("\r\n", Environment.NewLine)));
-            cfg.CreateMap<Structures.CustomPronunciations, CustomPronunciations>();
-            cfg.CreateMap<Structures.CustomPronunciationParams, CustomPronunciationParams>();
+           
             cfg.CreateMap<Structures.Turn, MultiSpeakerMarkup.Types.Turn>();
             cfg.CreateMap<Structures.MultiSpeakerMarkup, MultiSpeakerMarkup>()
                 .ForMember(dest => dest.Turns, opt => opt.Condition(src => src.Turns is { Count: > 0 }));
@@ -86,7 +85,7 @@ public class TextToSpeech : ITextToSpeech
     {
         TextToSpeechClient client = GetClient(credentials);
         SynthesizeSpeechRequest synthesizeSpeechRequest = _mapper.Map<SynthesizeSpeechRequest>(request);
-        
+
         var response = client.SynthesizeSpeech(synthesizeSpeechRequest);
 
         return _mapper.Map<Structures.SynthesizeSpeechResponse>(response);

@@ -19,10 +19,5 @@ public struct SynthesisInput
         DataType = OSDataType.InferredFromDotNetType,
         IsMandatory = false)]
     public MultiSpeakerMarkup MultiSpeakerMarkup;
-    
-    [OSStructureField(Description = "Custom Pronuncation",
-        DataType = OSDataType.InferredFromDotNetType,
-        IsMandatory = false)]
-    public CustomPronunciations CustomPronunciations;
 
 }

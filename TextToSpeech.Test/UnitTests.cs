@@ -54,11 +54,21 @@ public class Tests
         {
             Input = new SynthesisInput()
             {
-                Text = "Just to see if this is working"
+                MultiSpeakerMarkup = new MultiSpeakerMarkup()
+                {
+                    Turns = new List<Turn>()
+                    {
+                        new Turn()
+                        {
+                            Text = "Absolutely. There are several key challenges. First, you're limited by the Server Request Timeout setting, which is a maximum of 60 seconds in ODC. This can cause issues with larger file uploads. There's also a 28MB limit on request payloads. Additionally, ODC doesn't support File Streams and Byte Range Requests, which affects streaming capabilities and user experience. Memory usage can also be a problem when fetching many large files simultaneously.",
+                            Speaker = "R"
+                        }
+                    }
+                }
             },
             Voice = new VoiceSelectionParams()
             {
-                Name = "en-US-Standard-E",
+                Name = "en-US-Studio-MultiSpeaker",
                 LanguageCode = "en-US"
             },
             AudioConfig = new AudioConfig()
@@ -68,6 +78,5 @@ public class Tests
         };
 
         var response = _actions.SynthesizeSpeech(credentials,request);
-     
     }
 }
