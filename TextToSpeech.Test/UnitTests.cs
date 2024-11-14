@@ -77,6 +77,12 @@ public class Tests
             }
         };
 
-        var response = _actions.SynthesizeSpeech(credentials,request);
+        Output output = new Output()
+        {
+            Type = "S3",
+            PreSignedUrl = "Https://"
+        };
+
+        var response = _actions.SynthesizeSpeech(credentials,request, output);
     }
 }

@@ -9,9 +9,4 @@ public struct SynthesizeSpeechResponse
         DataType = OSDataType.InferredFromDotNetType,
         IsMandatory = false)]
     public AudioConfig AudioConfig;
-    
-    [OSStructureField(Description = "Audio content Binary data",
-        DataType = OSDataType.BinaryData,
-        IsMandatory = false)]
-    public byte[] AudioContent;
 }

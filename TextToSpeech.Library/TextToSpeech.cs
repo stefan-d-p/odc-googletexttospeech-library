@@ -74,19 +74,20 @@ public class TextToSpeech : ITextToSpeech
                 });
 
             cfg.CreateMap<AudioConfig, Structures.AudioConfig>();
-            cfg.CreateMap<SynthesizeSpeechResponse, Structures.SynthesizeSpeechResponse>()
-                .ForMember(dest => dest.AudioContent, opt => opt.MapFrom(src => src.AudioContent.ToByteArray()));
+            cfg.CreateMap<SynthesizeSpeechResponse, Structures.SynthesizeSpeechResponse>();
+
 
         });
         _mapper = mapperConfiguration.CreateMapper();
     }
     
-    public Structures.SynthesizeSpeechResponse SynthesizeSpeech(Structures.GoogleCredentials credentials, Structures.SynthesizeSpeechRequest request)
+    public Structures.SynthesizeSpeechResponse SynthesizeSpeech(Structures.GoogleCredentials credentials, Structures.SynthesizeSpeechRequest request, Structures.Output outputConfig)
     {
         TextToSpeechClient client = GetClient(credentials);
         SynthesizeSpeechRequest synthesizeSpeechRequest = _mapper.Map<SynthesizeSpeechRequest>(request);
 
         var response = client.SynthesizeSpeech(synthesizeSpeechRequest);
+        UploadS3(outputConfig.PreSignedUrl, response.AudioContent.ToByteArray());
 
         return _mapper.Map<Structures.SynthesizeSpeechResponse>(response);
     }
@@ -126,4 +127,27 @@ public class TextToSpeech : ITextToSpeech
 
         throw new Exception("Invalid Audio Encoding");
     }
+
+    private void UploadS3(string preSignedUrl, byte[] binaryData)
+    {
+        using var memoryStream = new MemoryStream(binaryData);
+        using var content = new StreamContent(memoryStream);
+        using var httpClient = new HttpClient();
+
+        using var request = new HttpRequestMessage(HttpMethod.Put, preSignedUrl);
+        request.Content = content;
+
+        var response = httpClient.Send(request);
+        ParseHttpResponse(response);
+    }
+    
+    private void ParseHttpResponse(HttpResponseMessage response)
+    {
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception($"Failed to upload audio to S3: {response.StatusCode}");
+        }
+    }
+    
+    
 }

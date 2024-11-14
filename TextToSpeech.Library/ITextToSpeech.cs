@@ -23,7 +23,11 @@ namespace Without.Systems.TextToSpeech
             [OSParameter(
                 Description = "Speech Synthesis input parameters",
                 DataType = OSDataType.InferredFromDotNetType)]
-            Structures.SynthesizeSpeechRequest request);
+            Structures.SynthesizeSpeechRequest request,
+            [OSParameter(
+                Description = "Output Configuration",
+                DataType = OSDataType.InferredFromDotNetType)]
+            Structures.Output outputConfig);
         
     }
 }
